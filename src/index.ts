@@ -51,6 +51,21 @@ const argv = yargs
         type: "string",
         default: "http://localhost:6104/v0"
     })
+    .option("aafClientUri", {
+        describe: "The aaf client Uri to use for AAF Auth.",
+        type: "string",
+        default:
+            process.env.AAF_CLIENT_URI ||
+            process.env.npm_package_config_aafClientUri
+    })
+    .option("aafClientSecret", {
+        describe:
+            "The secret to use for AAF Auth.  This can also be specified with the AAF_CLIENT_SECRET environment variable.",
+        type: "string",
+        default:
+            process.env.AAF_CLIENT_SECRET ||
+            process.env.npm_package_config_aafClientSecret
+    })
     .option("jwtSecret", {
         describe:
             "The secret to use to sign JSON Web Token (JWT) for authenticated requests.  This can also be specified with the JWT_SECRET environment variable.",
@@ -81,7 +96,7 @@ const argv = yargs
         default: process.env.USER_ID || process.env.npm_package_config_userId
     }).argv;
 
-const authPluginConfig = (argv.authPluginConfigJson as any) as AuthPluginConfig;
+const authPluginConfig = argv.authPluginConfigJson as any as AuthPluginConfig;
 
 // Create a new Express application.
 const app = express();
@@ -94,8 +109,8 @@ app.get("/healthz", (req, res) => res.send("OK"));
 /**
  * a 36x36 size icon to be shown on frontend login page
  */
-app.get("/icon.svg", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "../assets/generic-logo.svg"))
+app.get("/icon.png", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "../assets/aaf-logo.png"))
 );
 
 /**
@@ -145,12 +160,11 @@ app.use(
     createAuthPluginRouter({
         passport: passport,
         authorizationApi: authApiClient,
-        // you might want to update the helm chart to pass clientId & clientSecret provided by your idp (identity provied)
-        clientId: "My clientId",
-        clientSecret: "My clientSecret",
         externalUrl: argv.externalUrl,
         authPluginRedirectUrl: argv.authPluginRedirectUrl,
-        authPluginConfig
+        authPluginConfig,
+        aafClientSecret: argv.aafClientSecret,
+        aafClientUri: argv.aafClientUri
     })
 );
 

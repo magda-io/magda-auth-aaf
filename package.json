@@ -1,8 +1,8 @@
 {
-  "name": "magda-auth-template",
+  "name": "magda-auth-aaf",
   "version": "1.0.0",
-  "description": "A Magda Authentication Plugin Template. You can use this as a base to build your own Authentication Plugin",
-  "repository": "https://github.com/magda-io/magda-auth-template.git",
+  "description": "A Magda Authentication Plugin for Australian Access Federation (AAF) Rapid Connect",
+  "repository": "https://github.com/magda-io/magda-auth-aaf.git",
   "author": "",
   "license": "Apache-2.0",
   "private": true,
@@ -15,9 +15,9 @@
     "test": "mocha --require ts-node/register \"src/test/**/*.spec.ts\"",
     "docker-build-local": "create-docker-context-for-node-component --build --push --tag auto --local",
     "docker-build-prod": "create-docker-context-for-node-component --build --push --tag auto",
-    "helm-lint": "helm template deploy/magda-auth-template -f deploy/test-deploy.yaml 1>/dev/null",
+    "helm-lint": "helm template deploy/magda-auth-aaf -f deploy/test-deploy.yaml 1>/dev/null",
     "helm-docs": "helm-docs -t ./README.md.gotmpl -o ../../README.md",
-    "update-all-charts": "helm dep up ./deploy/magda-auth-template",
+    "update-all-charts": "helm dep up ./deploy/magda-auth-aaf",
     "add-all-chart-version-changes": "git ls-files -m | grep Chart.yaml | xargs git add && git ls-files -m | grep Chart.lock | xargs git add",
     "add-all-helm-docs-changes": "yarn helm-docs && git ls-files -m | grep -i readme.md | xargs git add",
     "version": "yarn update-helm-chart-version && yarn update-all-charts && yarn add-all-chart-version-changes && yarn add-all-helm-docs-changes",
@@ -41,14 +41,16 @@
     "@magda/auth-api-client": "^0.0.60",
     "@magda/authentication-plugin-sdk": "^0.0.60",
     "express": "^4.15.4",
+    "jwt-simple": "^0.5.6",
     "lodash": "^4.17.20",
     "passport": "0.2.2",
+    "passport-custom": "^1.1.1",
     "urijs": "^1.19.11",
     "yargs": "^16.1.0"
   },
   "config": {
     "docker": {
-      "name": "data61/magda-auth-template",
+      "name": "data61/magda-auth-aaf",
       "include": "node_modules dist Dockerfile package.json assets"
     },
     "jwtSecret": "squirrel",

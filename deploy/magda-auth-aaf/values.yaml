@@ -5,6 +5,11 @@ global:
   externalUrl: ""
   authPluginRedirectUrl: "/sign-in-redirect"
 
+# -- The aaf client Uri to use for AAF Rapid Connect Auth.
+# e.g. https://rapid.test.aaf.edu.au/jwt/authnrequest/research/xxxxxxxxxxxx
+# aaf client secret should be supplied via secret `aaf-client-secret` key `secret`.
+aafClientUri: 
+
 # -- the redirection url after the whole authentication process is completed.
 # Authentication Plugins will use this value as default.
 # The following query parameters can be used to supply the authentication result:
@@ -18,13 +23,13 @@ authPluginRedirectUrl:
 
 authPluginConfig:
   # -- the unique key of the auth plugin. Allowed characters: [a-zA-Z0-9\-]
-  key: "test-auth-plugin"
+  key: "aaf"
   
   # -- the display name of the auth plugin.
-  name: "Test Auth Plugin"
+  name: "AAF Rapid Connect"
   
   # -- the display icon URL of the auth plugin.
-  iconUrl: "/icon.svg"
+  iconUrl: "/icon.png"
   
   # -- The authentication method of the plugin. Support values are:
   # <ul>
@@ -86,7 +91,7 @@ autoscaler:
   targetCPUUtilizationPercentage: 80
 
 image: 
-  name: "magda-auth-template"
+  name: "magda-auth-aaf"
   # repository: 
   # tag: 
   # pullPolicy: 
