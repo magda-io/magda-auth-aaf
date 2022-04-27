@@ -1,8 +1,8 @@
-# magda-auth-template
+# magda-auth-aaf
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square)
 
-A Magda Authentication Plugin Template. You can use this as a base to build your own Magda Authentication Plugin.
+A Magda Authentication Plugin for Australian Access Federation (AAF): https://aaf.edu.au/.
 
 Requires MAGDA version 0.0.58 or above.
 
