@@ -35,6 +35,7 @@ export default function createAuthPluginRouter(
         options.authPluginRedirectUrl,
         externalUrl
     );
+    const redirectSessionKey = `${authPluginConfig.key}-redirect-url`;
 
     if (!aafClientUri) {
         throw new Error("Required aafClientUri can't be empty!");
@@ -100,10 +101,28 @@ export default function createAuthPluginRouter(
             res: express.Response,
             next: express.NextFunction
         ) => {
-            console.log(req.query);
+            const redirectUrl =
+                typeof req?.query?.redirect === "string" && req.query.redirect
+                    ? getAbsoluteUrl(req.query.redirect, externalUrl)
+                    : resultRedirectionUrl;
+            // save final hop redirect url to session
+            (req as any).session[redirectSessionKey] = redirectUrl;
             res.redirect(aafClientUri);
         }
     );
+
+    function getLoginReturnRedirectUrl(req: express.Request) {
+        let redirectUrl = (req as any)?.session?.[redirectSessionKey];
+
+        // This should not happen. If it happens, do our best.
+        if (!redirectUrl) {
+            console.log(
+                "Unable to find the expected redirect URL. Try the best."
+            );
+            redirectUrl = options.authPluginRedirectUrl;
+        }
+        return getAbsoluteUrl(redirectUrl, externalUrl);
+    }
 
     router.post(
         "/jwt",
@@ -111,11 +130,11 @@ export default function createAuthPluginRouter(
             failWithError: true
         }),
         (req: express.Request, res: express.Response) => {
-            redirectOnSuccess(resultRedirectionUrl, req, res);
+            redirectOnSuccess(getLoginReturnRedirectUrl(req), req, res);
         },
         (err: any, req: express.Request, res: express.Response): any => {
             console.log("error redirect: " + err);
-            redirectOnError(err, resultRedirectionUrl, req, res);
+            redirectOnError(err, getLoginReturnRedirectUrl(req), req, res);
         }
     );
 
