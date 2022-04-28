@@ -1,6 +1,7 @@
 import express, { Router } from "express";
 import { Authenticator, Profile } from "passport";
 import { default as ApiClient } from "@magda/auth-api-client";
+import bodyParser from "body-parser";
 import {
     AuthPluginConfig,
     createOrGetUserToken,
@@ -90,6 +91,8 @@ export default function createAuthPluginRouter(
 
     const router: express.Router = express.Router();
 
+    router.use(bodyParser);
+
     router.get(
         "/",
         (
@@ -104,28 +107,13 @@ export default function createAuthPluginRouter(
 
     router.post(
         "/jwt",
-        (
-            req: express.Request,
-            res: express.Response,
-            next: express.NextFunction
-        ) => {
-            passport.authenticate("aaf-custom", {
-                failWithError: true
-            })(req, res, next);
-        },
-        (
-            req: express.Request,
-            res: express.Response,
-            next: express.NextFunction
-        ) => {
+        passport.authenticate("aaf-custom", {
+            failWithError: true
+        }),
+        (req: express.Request, res: express.Response) => {
             redirectOnSuccess(resultRedirectionUrl, req, res);
         },
-        (
-            err: any,
-            req: express.Request,
-            res: express.Response,
-            next: express.NextFunction
-        ): any => {
+        (err: any, req: express.Request, res: express.Response): any => {
             console.log("error redirect: " + err);
             redirectOnError(err, resultRedirectionUrl, req, res);
         }
