@@ -21,7 +21,7 @@ When register:
 2. Add the auth plugin as a [Helm Chart Dependency](https://helm.sh/docs/helm/helm_dependency/)
 ```yaml
 - name: magda-auth-aaf
-  version: x.x.x
+  version: 1.0.0
   repository: https://charts.magda.io
 ```
 
@@ -31,7 +31,7 @@ magda-auth-aaf:
   aafClientUri: "https://rapid.test.aaf.edu.au/jwt/authnrequest/research/xxxxxxxxxxxx"
 ```
 
-4. Supply aaf client secret via secret `aaf-client-secret` key `secret`.
+4. Supply aaf client secret via secret `oauth-secrets` key `aaf-client-secret`.
 
 5. Config Gatway to add the auth plugin to Gateway's plugin list (More details see [here](https://github.com/magda-io/magda/blob/master/deploy/helm/internal-charts/gateway/README.md))
 ```yaml
