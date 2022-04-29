@@ -8,7 +8,7 @@ global:
 # -- The aaf client Uri to use for AAF Rapid Connect Auth.
 # e.g. https://rapid.test.aaf.edu.au/jwt/authnrequest/research/xxxxxxxxxxxx
 # aaf client secret should be supplied via secret `aaf-client-secret` key `secret`.
-aafClientUri: 
+aafClientUri: ""
 
 # -- the redirection url after the whole authentication process is completed.
 # Authentication Plugins will use this value as default.
