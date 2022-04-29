@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@magda/auth-api-client@^0.0.60":
-  version "0.0.60"
-  resolved "https://registry.yarnpkg.com/@magda/auth-api-client/-/auth-api-client-0.0.60.tgz#b001a3df51a8e5a6c65c65945a320047ba19c599"
-  integrity sha512-XW7pTyE47i+Uy6KPZuZz5CZfSRcmROWYZ08zH5G+raS2yadscrqFD6YWOSBNOpCG1GXbI8NEZhVuwOhmLFJjRQ==
+"@magda/auth-api-client@^1.2.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@magda/auth-api-client/-/auth-api-client-1.2.1.tgz#00455f60c91063ae75b5f00d08eef214f6682950"
+  integrity sha512-nEQpDV21taiu7qv3kkD06CazCOvGk+xp4LP9LMn1HqonOq6zpG+nZMAsMZiwIvbMOOUOouv3plv2yb6hfdOY5A==
 
-"@magda/authentication-plugin-sdk@^0.0.60":
-  version "0.0.60"
-  resolved "https://registry.yarnpkg.com/@magda/authentication-plugin-sdk/-/authentication-plugin-sdk-0.0.60.tgz#c99da82f658a44450c4d95ed2dd76b23a2a53d05"
-  integrity sha512-O+vMm1yQ/Uo4lF/EeuCVWTPWlPmu75FNa4nIrl73dLbU+9XW9RSIKnAOiGdRlFMTL494wCCicfBoU24ojlqpVA==
+"@magda/authentication-plugin-sdk@^1.2.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@magda/authentication-plugin-sdk/-/authentication-plugin-sdk-1.2.1.tgz#4b5885ccc03035cba7de922600b244318a59c734"
+  integrity sha512-BEdp52AwXyu5iY5emNP8HGKChytNkZV6Lfgr/bmGktcLCgJGpPZJGjqRiksvtrNSIxFMftL1k6zdZow4ibIC/g==
   dependencies:
     connect-pg-simple "^6.0.1"
     cookie-parser "^1.4.5"
@@ -29,10 +29,10 @@
     recursive-readdir "^2.2.2"
     yaml "^1.10.2"
 
-"@magda/docker-utils@^0.0.60":
-  version "0.0.60"
-  resolved "https://registry.yarnpkg.com/@magda/docker-utils/-/docker-utils-0.0.60.tgz#7e2002ebdb1472e3206c8e9b8f53730ac298dc33"
-  integrity sha512-jU6mYYeBPkm1cciDOiOqOlSn0Ru5BdhTkpL2qHq3nU+DMLNlgDCHD0sGyCm1iPRaDlo75igO200bFQAR1551pg==
+"@magda/docker-utils@^1.2.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@magda/docker-utils/-/docker-utils-1.2.1.tgz#04bd9474e2032ae95a71c21c66bb78140abb647f"
+  integrity sha512-ZfiZYQ5itZCwFS7KMncGu3FxRlkZ0B02tZz3xIUeUL3GE16qmWIOEv2wdO9E9pSkAkAVVzFl/CnAUoOY691cRA==
   dependencies:
     fs-extra "^2.1.2"
     is-subdir "^1.0.2"
