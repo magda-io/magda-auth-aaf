@@ -13,7 +13,7 @@ Requires MAGDA version 0.0.58 or above.
 - Or https://rapid.aaf.edu.au/registration (Production)
 
 When register:
-- the URL should be the external domain that is used to access Magda.
+- the `[external domain]` should be the external domain that is used to access Magda.
 - the callback URL should be: `https://[external domain]/auth/login/plugin/aaf/jwt`
 
 > If you change the auth plugin key, the `aaf` part in the callback URL should be replaced with the new auth plugin key.
@@ -53,7 +53,7 @@ Kubernetes: `>= 1.14.0-0`
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| aafClientUri | string | `nil` | The aaf client Uri to use for AAF Rapid Connect Auth. e.g. https://rapid.test.aaf.edu.au/jwt/authnrequest/research/xxxxxxxxxxxx aaf client secret should be supplied via secret `aaf-client-secret` key `secret`. |
+| aafClientUri | string | `""` | The aaf client Uri to use for AAF Rapid Connect Auth. e.g. https://rapid.test.aaf.edu.au/jwt/authnrequest/research/xxxxxxxxxxxx aaf client secret should be supplied via secret `aaf-client-secret` key `secret`. |
 | authPluginConfig.authenticationMethod | string | `"IDP-URI-REDIRECTION"` | The authentication method of the plugin. Support values are: <ul> <li>`IDP-URI-REDIRECTION`: the plugin will redirect user agent to idp (identity provider) for authentication. e.g. Google & facebook oauth etc.</li> <li>`PASSWORD`: the plugin expect frontend do a form post that contains username & password to the plugin for authentication.</li> <li>`QR-CODE`: the plugin offers a url that is used by the frontend to request auth challenge data. The data will be encoded into a QR-code image and expect the user scan the QR code with a mobile app to complete the authentication request.</li> </ul> See [Authentication Plugin Specification](https://github.com/magda-io/magda/blob/master/docs/docs/authentication-plugin-spec.md) for more details |
 | authPluginConfig.iconUrl | string | `"/icon.png"` | the display icon URL of the auth plugin. |
 | authPluginConfig.key | string | `"aaf"` | the unique key of the auth plugin. Allowed characters: [a-zA-Z0-9\-] |
