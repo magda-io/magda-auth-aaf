@@ -1,0 +1,12 @@
+{
+    "listenPort": "80",
+    "dbHost": "session-db",
+    "dbPort": "5432",
+    "cookieJson": "./test/cookieConfig.json",
+    "externalUrl": "https://minikube.data.gov.au/",
+    "aafClientUri": "https://rapid.test.aaf.edu.au/jwt/authnrequest/research/G4-hTrIGgL10WlgQq04IBA",
+    "aafClientSecret": "rig-Xr>afVDz0T!\"e(G7PA`@GxS7it6_",
+    "authPluginRedirectUrl": "/sign-in-redirect",
+    "authApiUrl": "http://localhost:6104/v0",
+    "authPluginConfigJson": "./test/authconfig.json"
+}

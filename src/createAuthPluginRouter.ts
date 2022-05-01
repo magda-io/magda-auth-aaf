@@ -1,7 +1,6 @@
 import express, { Router } from "express";
 import { Authenticator, Profile } from "passport";
 import { default as ApiClient } from "@magda/auth-api-client";
-import bodyParser from "body-parser";
 import {
     AuthPluginConfig,
     createOrGetUserToken,
@@ -92,7 +91,12 @@ export default function createAuthPluginRouter(
 
     const router: express.Router = express.Router();
 
-    router.use(bodyParser);
+    router.use(express.json());
+    router.use(
+        express.urlencoded({
+            extended: true
+        })
+    );
 
     router.get(
         "/",

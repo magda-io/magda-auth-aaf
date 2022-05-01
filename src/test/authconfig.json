@@ -1,0 +1,6 @@
+{
+    "key": "aaf",
+    "name": "AAF Rapid Connect",
+    "iconUrl": "/icon.png",
+    "authenticationMethod": "IDP-URI-REDIRECTION"
+}

@@ -20,7 +20,7 @@ const argv = yargs
     })
     .option("authPluginRedirectUrl", {
         describe:
-            "The URL that auth plugin shoulud redirect and report authentication report to.",
+            "The URL that auth plugin should redirect and report authentication report to.",
         type: "string",
         default: "/sign-in-redirect"
     })
