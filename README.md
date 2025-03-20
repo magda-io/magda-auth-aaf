@@ -22,7 +22,7 @@ When register:
 ```yaml
 - name: magda-auth-aaf
   version: 1.0.0
-  repository: https://charts.magda.io
+  repository: "oci://ghcr.io/magda-io/charts"
 ```
 
 3. Config the auth plugin with required parameters
