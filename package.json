@@ -1,6 +1,6 @@
 {
   "name": "magda-auth-aaf",
-  "version": "1.0.0",
+  "version": "2.0.0-pr.2.1",
   "description": "A Magda auth plugin for Australian Access Federation (AAF) Rapid Connect",
   "repository": "https://github.com/magda-io/magda-auth-aaf.git",
   "author": "Jacky Jiang",
