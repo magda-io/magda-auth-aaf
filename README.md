@@ -1,6 +1,6 @@
 # magda-auth-aaf
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square)
+![Version: 2.0.0-pr.2.0](https://img.shields.io/badge/Version-2.0.0--pr.2.0-informational?style=flat-square)
 
 A Magda Authentication Plugin for Australian Access Federation (AAF) Rapid Connect.
 
