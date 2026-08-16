@@ -7,6 +7,6 @@ home: "https://github.com/magda-io/magda-auth-aaf"
 sources: ["https://github.com/magda-io/magda-auth-aaf"]
 dependencies:
   - name: magda-common
-    version: "1.2.0"
-    repository: "https://charts.magda.io"
+    version: "7.0.0-alpha.1"
+    repository: "oci://ghcr.io/magda-io/charts"
 

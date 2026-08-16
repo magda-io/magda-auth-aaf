@@ -8,9 +8,8 @@ import {
     redirectOnError,
     getAbsoluteUrl
 } from "@magda/authentication-plugin-sdk";
-
-const CustomStrategy = require("passport-custom").Strategy;
-const jwt = require("jwt-simple");
+import { Strategy as CustomStrategy } from "passport-custom";
+import jwt from "jwt-simple";
 
 export interface AuthPluginRouterOptions {
     authorizationApi: ApiClient;

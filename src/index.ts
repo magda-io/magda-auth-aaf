@@ -1,16 +1,20 @@
 import express from "express";
+import fs from "fs";
 import path from "path";
 import yargs from "yargs";
-import createAuthPluginRouter from "./createAuthPluginRouter";
+import { hideBin } from "yargs/helpers";
+import createAuthPluginRouter from "./createAuthPluginRouter.js";
 import AuthApiClient, { UserToken } from "@magda/auth-api-client";
 import {
     createMagdaSessionRouter,
     AuthPluginConfig
 } from "@magda/authentication-plugin-sdk";
+import { __dirname } from "@magda/esm-utils";
 
-const coerceJson = (path?: string) => path && require(path);
+const coerceJson = (path?: string) =>
+    path ? JSON.parse(fs.readFileSync(path, "utf-8")) : undefined;
 
-const argv = yargs
+const argv = yargs(hideBin(process.argv))
     .config()
     .help()
     .option("listenPort", {
@@ -94,7 +98,7 @@ const argv = yargs
             "The user id to use when making authenticated requests to the registry",
         type: "string",
         default: process.env.USER_ID || process.env.npm_package_config_userId
-    }).argv;
+    }).parseSync();
 
 const authPluginConfig = argv.authPluginConfigJson as any as AuthPluginConfig;
 
@@ -110,7 +114,7 @@ app.get("/healthz", (req, res) => res.send("OK"));
  * a 36x36 size icon to be shown on frontend login page
  */
 app.get("/icon.png", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "../assets/aaf-logo.png"))
+    res.sendFile(path.resolve(__dirname(), "../assets/aaf-logo.png"))
 );
 
 /**
